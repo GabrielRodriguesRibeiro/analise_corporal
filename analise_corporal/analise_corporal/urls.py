@@ -19,10 +19,12 @@ from django.urls import path
 
 from cadastro_usuario import views as cadastro_views
 from corpo import views as corpo_views
+from dashboard import views as dashboard_view
 
 urlpatterns = [
     path('', cadastro_views.login_view, name='home'),
     path('admin/', admin.site.urls),
+    path('dashboard/', dashboard_view.dashboard_view, name='dashboard'),
     path('login/', cadastro_views.login_view, name='login'),
     path('formulario_corpo/',  corpo_views.formulario_corpo_view, name='formulario_corpo'),
 ]

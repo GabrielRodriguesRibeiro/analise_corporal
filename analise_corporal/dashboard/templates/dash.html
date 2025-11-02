@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfico de Evolução Corporal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            padding: 40px;
+        }
+
+        #myDiv {
+            width: 95%;
+            max-width: 1400px;
+            height: 650px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+        }
+
+        .dropdown-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Análise Corporal - Gráfico</span>
+        </div>
+    </nav>
+
+    <div class="chart-container">
+        <!-- Título centralizado -->
+        <h3 class="mb-3 text-center w-100">GRÁFICO DE ACOMPANHAMENTO</h3>
+
+        <!-- Dropdown à direita, mas com espaçamento da borda -->
+        <div class="dropdown-container" style="padding-right: 150px;">
+            <select id="metricSelect" class="form-select w-auto shadow-sm">
+                <option value="tgc">TGC (%)</option>
+                <option value="musculo">Músculo (kg)</option>
+                <option value="umidade">Umidade (%)</option>
+                <option value="massa_ossea">Massa Óssea (kg)</option>
+                <option value="tmb">TMB (kcal)</option>
+                <option value="taxa_proteica">Taxa Proteica (%)</option>
+                <option value="idade_corporal">Idade Corporal (anos)</option>
+                <option value="gordura_viceral">Gordura Visceral (nível)</option>
+                <option value="gordura_subcutanea">Gordura Subcutânea (%)</option>
+                <option value="peso_ideal">Peso Ideal (kg)</option>
+                <option value="gordura_corporal">Gordura Corporal (%)</option>
+                <option value="peso_sem_gordura">Peso sem Gordura (kg)</option>
+                <option value="peso_muscular">Peso Muscular (kg)</option>
+                <option value="quantidade_proteina">Quantidade de Proteína (kg)</option>
+            </select>
+        </div>
+
+        <div id="myDiv"></div>
+    </div>
+
+    <script>
+        // Dados simulados
+        const dados = {
+            tgc: [18.5, 17.9, 16.8, 16.0],
+            musculo: [35.2, 36.1, 37.0, 38.5],
+            umidade: [60.0, 61.2, 62.1, 63.0],
+            massa_ossea: [2.8, 2.9, 3.0, 3.1],
+            tmb: [1600, 1620, 1650, 1680],
+            taxa_proteica: [16.3, 17.0, 17.5, 18.0],
+            idade_corporal: [25, 24, 23, 22],
+            gordura_viceral: [10, 9, 8, 7],
+            gordura_subcutanea: [15.5, 14.9, 14.2, 13.8],
+            peso_ideal: [70.0, 70.0, 70.0, 70.0],
+            gordura_corporal: [20.0, 19.2, 18.7, 18.1],
+            peso_sem_gordura: [58.0, 59.0, 59.8, 60.5],
+            peso_muscular: [32.5, 33.4, 34.0, 35.0],
+            quantidade_proteina: [10.5, 11.0, 11.3, 11.7]
+        };
+
+        const xData = [1, 2, 3, 4]; // medições
+
+        function atualizarGrafico(metrica) {
+            const yData = dados[metrica];
+
+            const trace = {
+                type: 'scatter',
+                x: xData,
+                y: yData,
+                mode: 'lines+markers',
+                name: metrica.replace('_', ' ').toUpperCase(),
+                line: { color: 'rgb(55, 128, 191)', width: 3 }
+            };
+
+            const layout = {
+                title: { text: `Evolução de ${metrica.replace('_', ' ')}`, font: { size: 22 } },
+                xaxis: { title: 'Medição', showgrid: false },
+                yaxis: { title: 'Valor', gridcolor: 'lightgray' },
+                plot_bgcolor: 'white',
+                width: 1200,
+                height: 600,
+                margin: { t: 80, l: 80, r: 40, b: 80 }
+            };
+
+            Plotly.newPlot('myDiv', [trace], layout);
+        }
+
+        document.getElementById('metricSelect').addEventListener('change', function() {
+            atualizarGrafico(this.value);
+        });
+
+        // Gráfico inicial
+        atualizarGrafico('tgc');
+    </script>
+
+</body>
+</html>

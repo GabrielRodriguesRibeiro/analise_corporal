@@ -10,7 +10,7 @@ def login_view(request):
         usuario = Usuario.objects.filter(email=email, senha=senha).first()
 
         if usuario:
-            return redirect('formulario_corpo')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Email ou senha inválidos')
             return redirect('login')
