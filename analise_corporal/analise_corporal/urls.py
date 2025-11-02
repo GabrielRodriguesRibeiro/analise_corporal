@@ -21,6 +21,7 @@ from cadastro_usuario import views as cadastro_views
 from corpo import views as corpo_views
 
 urlpatterns = [
+    path('', cadastro_views.login_view, name='home'),
     path('admin/', admin.site.urls),
     path('login/', cadastro_views.login_view, name='login'),
     path('formulario_corpo/',  corpo_views.formulario_corpo_view, name='formulario_corpo'),

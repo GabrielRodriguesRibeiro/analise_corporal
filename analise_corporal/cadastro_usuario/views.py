@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages  # precisa importar isso
+from django.contrib import messages
 from cadastro_usuario.models import Usuario
 
 # Create your views here
@@ -10,9 +10,9 @@ def login_view(request):
         usuario = Usuario.objects.filter(email=email, senha=senha).first()
 
         if usuario:
-            return redirect('formulario_corpo.html')
+            return redirect('formulario_corpo')
         else:
             messages.error(request, 'Email ou senha inválidos')
-            return redirect('login.html')
+            return redirect('login')
     else:
         return render(request, 'login.html')
