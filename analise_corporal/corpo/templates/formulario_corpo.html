@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário Corporal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 900px;">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">REGISTRO CORPORAL</h3>
+            <form method="POST" action="{% url 'formulario_corpo' %}">
+                {% csrf_token %}
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="tgc" class="form-label">TGC (%)</label>
+                        <input type="number" step="0.01" class="form-control" name="tgc" id="tgc" placeholder="Ex: 18.5" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="musculo" class="form-label">Músculo (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="musculo" id="musculo" placeholder="Ex: 35.2" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="umidade" class="form-label">Umidade (%)</label>
+                        <input type="number" step="0.01" class="form-control" name="umidade" id="umidade" placeholder="Ex: 60.0" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="massa_ossea" class="form-label">Massa Óssea (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="massa_ossea" id="massa_ossea" placeholder="Ex: 2.8" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="tmb" class="form-label">TMB (kcal)</label>
+                        <input type="number" step="0.01" class="form-control" name="tmb" id="tmb" placeholder="Ex: 1600" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="taxa_proteica" class="form-label">Taxa Proteica (%)</label>
+                        <input type="number" step="0.01" class="form-control" name="taxa_proteica" id="taxa_proteica" placeholder="Ex: 16.3" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="idade_corporal" class="form-label">Idade Corporal (anos)</label>
+                        <input type="number" class="form-control" name="idade_corporal" id="idade_corporal" placeholder="Ex: 25" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="gordura_viceral" class="form-label">Gordura Visceral</label>
+                        <input type="number" class="form-control" name="gordura_viceral" id="gordura_viceral" placeholder="Ex: 10" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="gordura_subcutanea" class="form-label">Gordura Subcutânea (%)</label>
+                        <input type="number" step="0.01" class="form-control" name="gordura_subcutanea" id="gordura_subcutanea" placeholder="Ex: 15.5" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="peso_ideal" class="form-label">Peso Ideal (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="peso_ideal" id="peso_ideal" placeholder="Ex: 70.0" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="gordura_corporal" class="form-label">Gordura Corporal (%)</label>
+                        <input type="number" step="0.01" class="form-control" name="gordura_corporal" id="gordura_corporal" placeholder="Ex: 20.0" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="peso_sem_gordura" class="form-label">Peso sem Gordura (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="peso_sem_gordura" id="peso_sem_gordura" placeholder="Ex: 58.0" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="peso_muscular" class="form-label">Peso Muscular (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="peso_muscular" id="peso_muscular" placeholder="Ex: 32.5" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="quantidade_proteina" class="form-label">Quantidade de Proteína (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="quantidade_proteina" id="quantidade_proteina" placeholder="Ex: 10.5" required>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg w-50">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
